@@ -30,5 +30,19 @@ p.main {
 .legend {
   position: absolute;
   background-color: #fff;
-  z-index: 2000;
+  /*z-index: 2000;*/
+  right: 30px;
+  bottom: 30px;
+}
+
+td {
+  min-width: 30px;
+  font-size: 14px;
+  font-family: helvetica, arial, sans-serif;
+  padding: 5px;
+}
+
+#legCol {
+  width: 30px;
+  height: 14px;
 }

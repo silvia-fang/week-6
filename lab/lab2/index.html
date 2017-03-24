@@ -20,7 +20,7 @@
         collection for one of the regions, click on that region on the map.</p>
       </div>
       <div id="results" style="display: none;">
-        <h1 class="day-of-week">Day of Week</h1>
+        <h1 class="day-of-week" style = "color: #6b78ff">Day of Week</h1>
         <p class="main">Your garbage collection day is <span class="day-of-week">
         Day of Week</span>.</p>
         <p>Please be sure to leave your garbage outside on <span class="day-of-week">
@@ -31,7 +31,25 @@
     <!-- Map -->
     <div id="map" class="map"></div>
     <!-- Legend -->
-    <div class="legend"></div>
+    <div class="legend">
+      <table style = "border:4px; border-color:white">
+        <tr>
+          <td class="legCol" style ="background-color:#96ceb4"></td>  <td>Monday</td>
+        </tr>
+        <tr>
+          <td class="legCol" style ="background-color:#75c9d2"></td>  <td>Tuesday</td>
+        </tr>
+        <tr>
+          <td class="legCol" style ="background-color:#beecde"></td>  <td>Wednesday</td>
+        </tr>
+        <tr>
+          <td class="legCol" style ="background-color:#ffeead"></td>  <td>Thursday</td>
+        </tr>
+        <tr>
+          <td class="legCol" style ="background-color:#ffcc5c"></td>  <td>Friday</td>
+        </tr>
+      </table>
+    </div>
     <!-- Javascript Imports -->
     <script src="js/jquery-2.2.0.js"></script>
     <script src="js/underscore.js"></script>

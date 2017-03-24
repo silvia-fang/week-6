@@ -123,12 +123,22 @@ of the application to report this information.
 
 ===================== */
 
-var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson"
+var dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson";
 var featureGroup;
 
+// var Dataset = "https://raw.githubusercontent.com/CPLN692-MUSA611/datasets/master/geojson/philadelphia-garbage-collection-boundaries.geojson";
+// var parsedData = $.ajax(Dataset).done(function(d){
+//   return JSON.parse(d);
+// });
+
 var myStyle = function(feature) {
-  return {};
-};
+  switch (feature.properties.COLLDAY) {
+    case 'MON':   return {color: "#96ceb4"};
+    case 'TUE':   return {color: "#75c9d2"};
+    case 'WED':   return {color: "#beecde"};
+    case 'THU':   return {color: "#ffeead"};
+    case 'FRI':   return {color: "#ffcc5c"};
+}};
 
 var showResults = function() {
   /* =====================
@@ -151,13 +161,33 @@ var eachFeatureFunction = function(layer) {
     Check out layer.feature to see some useful data about the layer that
     you can use in your application.
     ===================== */
-    console.log(layer.feature);
-    showResults();
-  });
-};
+
+    // switch (featureGroup.properties.COLLDAY) {
+    //   case 'MON':   return $("h1.day-of-week").text("Monday");
+    //   case 'TUE':   return $("h1.day-of-week").text("Tuesday");
+    //   case 'WED':   return $("h1.day-of-week").text("Wednesday");
+    //   case 'THR':   return $("h1.day-of-week").text("Thursday");
+    //   case 'FRI':   return $("h1.day-of-week").text("Friday");
+    //   case 'SAT':   return $("h1.day-of-week").text("Satuaday");}
+console.log(layer);
+showResults();
+    if (layer.feature.properties.COLLDAY === "MON"){
+    return $(".day-of-week").text("Monday");}
+    else if (layer.feature.properties.COLLDAY === "TUE"){
+    return $(".day-of-week").text("Tuesday");}
+    else if (layer.feature.properties.COLLDAY === "WED"){
+    return $(".day-of-week").text("Wednesday");}
+    else if (layer.feature.properties.COLLDAY === "THU"){
+    return $(".day-of-week").text("Thursday");}
+    else if (layer.feature.properties.COLLDAY === "FRI"){
+    return $(".day-of-week").text("Friday");}
+    else if (layer.feature.properties.COLLDAY === "SAT"){
+    return $(".day-of-week").text("Satuaday");}
+  }
+);};
 
 var myFilter = function(feature) {
-  return true;
+  return feature.properties.COLLDAY!==" ";
 };
 
 $(document).ready(function() {
@@ -167,7 +197,7 @@ $(document).ready(function() {
       style: myStyle,
       filter: myFilter
     }).addTo(map);
-
+console.log(parsedData.features);
     // quite similar to _.each
     featureGroup.eachLayer(eachFeatureFunction);
   });
